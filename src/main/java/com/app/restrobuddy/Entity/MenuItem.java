@@ -1,10 +1,12 @@
 package com.app.restrobuddy.Entity;
 
 
+import com.app.restrobuddy.Shared.Enum.ItemType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +19,7 @@ import lombok.Setter;
 @Setter
 public class MenuItem {
 
+    @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,7 +31,7 @@ public class MenuItem {
     private String description;
 
     @Column(name="price")
-    private Long price;
+    private Double price;
 
     @Column(name="discount")
     private int discount;
@@ -47,4 +50,7 @@ public class MenuItem {
 
     @Column(name="is_active")
     private boolean isActive;
+
+    @Column(name="item_type")
+    private ItemType itemType;
 }
