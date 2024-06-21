@@ -1,4 +1,4 @@
-package com.app.restrobuddy.Service;
+package com.app.restrobuddy.Service.MenuItem;
 
 import com.app.restrobuddy.Shared.Dtos.MenuItemDto;
 

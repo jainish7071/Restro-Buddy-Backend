@@ -1,4 +1,4 @@
-package com.app.restrobuddy.Service;
+package com.app.restrobuddy.Service.MenuItem;
 
 import com.app.restrobuddy.Entity.MenuItem;
 import com.app.restrobuddy.Repository.MenuItemRepository;
