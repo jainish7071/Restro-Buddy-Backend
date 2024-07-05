@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="order_items")
-public class OrderItems {
+public class OrderItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +21,11 @@ public class OrderItems {
 
     @ManyToOne
     @JoinColumn(name="order_id")
-    private Order order;
+    private OrderEntity orderEntity;
 
     @ManyToOne
     @JoinColumn(name = "item_id")
-    private MenuItem item;
+    private MenuItemEntity item;
 
     @Column(name="item_count")
     private int item_count;

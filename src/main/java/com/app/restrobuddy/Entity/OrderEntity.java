@@ -1,6 +1,6 @@
 package com.app.restrobuddy.Entity;
 
-
+import com.app.restrobuddy.Shared.Enum.OrderStatus;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,7 +22,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Order {
+public class OrderEntity {
 
     @Id
     @Column(name = "id")
@@ -44,6 +44,15 @@ public class Order {
     @Column(name = "estimated_time")
     private int estimatedTime;
 
+    @Column(name="total_price")
+    private Long totalPrice;
+
+    @Column(name="discounted_price")
+    private Long discountedPrice;
+
+    @Column(name="order_status")
+    private OrderStatus orderStatus;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<OrderItems> items;
+    private List<OrderItemEntity> items;
 }

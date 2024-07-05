@@ -8,9 +8,10 @@ import java.util.List;
 @Data
 public class OrderDto {
     private Long id;
-    private String table_id;
+    private String tableId;
     private String paymentId;
     private Date orderTime;
     private int estimatedTime;
+    private Date deliveredTime;
     private List<OrderItemDto> items;
 }

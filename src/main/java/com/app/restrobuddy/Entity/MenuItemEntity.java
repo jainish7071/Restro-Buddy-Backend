@@ -17,7 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class MenuItem {
+public class MenuItemEntity {
 
     @Id
     @Column(name="id")

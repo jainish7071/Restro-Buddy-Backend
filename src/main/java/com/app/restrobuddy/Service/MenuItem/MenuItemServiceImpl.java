@@ -1,6 +1,6 @@
 package com.app.restrobuddy.Service.MenuItem;
 
-import com.app.restrobuddy.Entity.MenuItem;
+import com.app.restrobuddy.Entity.MenuItemEntity;
 import com.app.restrobuddy.Repository.MenuItemRepository;
 import com.app.restrobuddy.Shared.Dtos.MenuItemDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,23 +17,29 @@ public class MenuItemServiceImpl implements MenuItemService {
 
     @Override
     public List<MenuItemDto> getMenuItems() {
-        List<MenuItem> menuItems = menuItemRepository.findAll();
-        return menuItems.stream().map(this::convertToDto).collect(Collectors.toList());
+        List<MenuItemEntity> menuItemEntities = menuItemRepository.findAll();
+        return menuItemEntities.stream().map(this::copyToDto).collect(Collectors.toList());
     }
 
-    private MenuItemDto convertToDto(MenuItem menuItem) {
+    @Override
+    public MenuItemDto copyToDto(MenuItemEntity entity) {
         MenuItemDto menuItemDto = new MenuItemDto();
-        menuItemDto.setId(menuItem.getId());
-        menuItemDto.setName(menuItem.getName());
-        menuItemDto.setDescription(menuItem.getDescription());
-        menuItemDto.setPrice(menuItem.getPrice());
-        menuItemDto.setDiscount(menuItem.getDiscount());
-        menuItemDto.setImageUrl(menuItem.getImageUrl());
-        menuItemDto.setRecommended(menuItem.isRecommended());
-        menuItemDto.setTimeToPrepare(menuItem.getTimeToPrepare());
-        menuItemDto.setAvailable(menuItem.isAvailable());
-        menuItemDto.setActive(menuItem.isActive());
-        menuItemDto.setItemType(menuItem.getItemType());
+        menuItemDto.setId(entity.getId());
+        menuItemDto.setName(entity.getName());
+        menuItemDto.setDescription(entity.getDescription());
+        menuItemDto.setPrice(entity.getPrice());
+        menuItemDto.setDiscount(entity.getDiscount());
+        menuItemDto.setImageUrl(entity.getImageUrl());
+        menuItemDto.setRecommended(entity.isRecommended());
+        menuItemDto.setTimeToPrepare(entity.getTimeToPrepare());
+        menuItemDto.setAvailable(entity.isAvailable());
+        menuItemDto.setActive(entity.isActive());
+        menuItemDto.setItemType(entity.getItemType());
         return menuItemDto;
+    }
+
+    @Override
+    public MenuItemEntity copyFromDto(MenuItemDto dto) {
+        return null;
     }
 }
