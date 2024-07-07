@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface MenuItemService extends BaseService<MenuItemEntity, MenuItemDto> {
     List<MenuItemDto> getMenuItems();
+
+    MenuItemDto addMenuItem(MenuItemDto item);
 }

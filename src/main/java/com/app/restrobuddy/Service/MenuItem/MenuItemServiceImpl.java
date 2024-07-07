@@ -22,6 +22,14 @@ public class MenuItemServiceImpl implements MenuItemService {
     }
 
     @Override
+    public MenuItemDto addMenuItem(MenuItemDto item) {
+        MenuItemEntity menuItem = new MenuItemEntity();
+        copyFromDto(menuItem, item);
+        MenuItemEntity savedMenuItem = menuItemRepository.save(menuItem);
+        return copyToDto(savedMenuItem);
+    }
+
+    @Override
     public MenuItemDto copyToDto(MenuItemEntity entity) {
         MenuItemDto menuItemDto = new MenuItemDto();
         menuItemDto.setId(entity.getId());
@@ -39,7 +47,18 @@ public class MenuItemServiceImpl implements MenuItemService {
     }
 
     @Override
-    public MenuItemEntity copyFromDto(MenuItemDto dto) {
-        return null;
+    public MenuItemEntity copyFromDto(MenuItemEntity entity, MenuItemDto dto) {
+        entity.setId(dto.getId());
+        entity.setName(dto.getName());
+        entity.setDescription(dto.getDescription());
+        entity.setPrice(dto.getPrice());
+        entity.setDiscount(dto.getDiscount());
+        entity.setImageUrl(dto.getImageUrl());
+        entity.setRecommended(dto.isRecommended());
+        entity.setTimeToPrepare(dto.getTimeToPrepare());
+        entity.setAvailable(dto.isAvailable());
+        entity.setActive(dto.isActive());
+        entity.setItemType(dto.getItemType());
+        return entity;
     }
 }

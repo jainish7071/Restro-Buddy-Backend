@@ -1,33 +1,32 @@
 package com.app.restrobuddy.Controller;
 
 
-import com.app.restrobuddy.Service.MenuItem.MenuItemService;
-import com.app.restrobuddy.Shared.Dtos.MenuItemDto;
+import com.app.restrobuddy.Service.Order.OrderService;
+import com.app.restrobuddy.Shared.Dtos.OrderDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/menu-item")
+@RequestMapping("/order")
 @CrossOrigin(origins = "*")
-public class MenuItemController {
+public class OrderController {
 
     @Autowired
-    private MenuItemService menuItemService;
+    private OrderService orderService;
 
-    @GetMapping(path = "/findAll")
-    public List<MenuItemDto> getMenuItems(){
-        return menuItemService.getMenuItems();
+    @GetMapping("/getOrder/{orderId}")
+    public OrderDto getOrder(@PathVariable Long orderId){
+        return orderService.getOrder(orderId);
     }
 
-    @PostMapping(path = "/add")
-    public MenuItemDto addMenuItem(@RequestBody MenuItemDto item){
-        return menuItemService.addMenuItem(item);
+    @PostMapping("/placeOrder")
+    public OrderDto placeOrder(@RequestBody OrderDto order){
+       return orderService.placeOrder(order);
     }
 }

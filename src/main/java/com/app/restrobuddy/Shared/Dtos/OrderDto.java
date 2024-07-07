@@ -1,5 +1,6 @@
 package com.app.restrobuddy.Shared.Dtos;
 
+import com.app.restrobuddy.Shared.Enum.OrderStatus;
 import lombok.Data;
 
 import java.util.Date;
@@ -13,5 +14,8 @@ public class OrderDto {
     private Date orderTime;
     private int estimatedTime;
     private Date deliveredTime;
+    private Long totalPrice;
+    private Long discountedPrice;
+    private OrderStatus orderStatus;
     private List<OrderItemDto> items;
 }

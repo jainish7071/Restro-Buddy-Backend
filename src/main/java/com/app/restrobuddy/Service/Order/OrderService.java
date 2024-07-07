@@ -5,5 +5,7 @@ import com.app.restrobuddy.Service.BaseService;
 import com.app.restrobuddy.Shared.Dtos.OrderDto;
 
 public interface OrderService extends BaseService<OrderEntity, OrderDto> {
-    OrderDto saveOrder(OrderDto order);
+    OrderDto placeOrder(OrderDto order);
+
+    OrderDto getOrder(Long orderId);
 }
